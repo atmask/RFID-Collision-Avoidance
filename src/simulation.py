@@ -5,7 +5,7 @@ import settings
 
 def run_simulation(num_tags=10, tag_cls=BaseTag):
     # Create a collection fo tags
-    tags = [BaseTag() for _ in range(num_tags)]
+    tags = [tag_cls() for _ in range(num_tags)]
 
     #Current epoch time
     min_time = int(time.time())
