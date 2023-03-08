@@ -1,7 +1,10 @@
 # RFID-Collision-Avoidance
 A repo for the simulation of RFID collision avoidance algorithms in Python
 
+# How to Run
+`>>> python3 src`
 
+# Design
 Design Psudeo Code:
 
 ```python
