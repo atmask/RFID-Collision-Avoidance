@@ -17,21 +17,16 @@ def run_simulation(num_tags=10, tag_cls=BaseTag, reader_cls=BinaryTagReader):
         print(f"TIME: {t.generate_time(min_time, max_time)}, tag: {t.id}")
 
     transmission_map = {}
-    # for each timestamp in the SIMULATED_DURATION
-        # check if multiple tags attempted to transmit
-        # if yes:
-            # collision detection
-        # else:
-            # continue
-
     for t in tags:
         transmission_map[t.transmit_time] = [t.id] if None else transmission_map[t.transmit_time].append(t.id)
     
+
+    slots = 0
 
     for _,tags in transmission_map:
         if len(tags) <= 1:
             continue
             
-        tag_reader.manage_collision(tags)
+        slots += tag_reader.manage_collision(tags)
 
 
