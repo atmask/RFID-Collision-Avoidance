@@ -4,10 +4,10 @@ from reader import BinaryTagReader
 import time
 import settings
 
-def run_simulation(num_tags=10, tag_cls=BaseTag):
+def run_simulation(num_tags=10, tag_cls=BaseTag, reader_cls=BinaryTagReader):
     # Create a collection fo tags
     tags = [tag_cls() for _ in range(num_tags)]
-    tag_reader = BinaryTagReader()
+    tag_reader = reader_cls()
 
     #Current epoch time
     min_time = int(time.time())
