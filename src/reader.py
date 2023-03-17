@@ -1,11 +1,12 @@
-
-class BaseTagReader():
+from abc import ABC, abstractmethod
+class BaseTagReader(ABC):
     ''' cdefine a common interface for Readers implementing collision detection protocols'''
 
 
     def __init__(self):
         pass
 
+    @abstractmethod
     def manage_collision(self, tags):
         pass
 

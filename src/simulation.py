@@ -1,12 +1,13 @@
 
 from tag import BaseTag
+from reader import BinaryTagReader
 import time
 import settings
 
 def run_simulation(num_tags=10, tag_cls=BaseTag):
     # Create a collection fo tags
     tags = [tag_cls() for _ in range(num_tags)]
-    tag_reader = Reader()
+    tag_reader = BinaryTagReader()
 
     #Current epoch time
     min_time = int(time.time())
