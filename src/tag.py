@@ -31,4 +31,4 @@ class BaseTag():
         
         
     def _generate_uid(self, length=64):
-        return "".join([str(random.randint(0, 1)) for _ in range(length)])
+        return f'0b{"".join([str(random.randint(0, 1)) for _ in range(length)])}'
