@@ -40,6 +40,8 @@ class BinaryTagReader(BaseTagReader):
         '''Transmit an ID with three numbers. If collision then manage_collision with subset'''
         if len(matching_tags) <= 1:
             print(f'de-collided: {matching_tags}')
+            # TODO: We may need to return 1 here as we are still querying on that id.
+            # This may be why we are linear and not logarithmic
             return len(matching_tags)
         
         # Need all permuations of three bits 000 001 010 011 100 101 110 111
@@ -47,7 +49,6 @@ class BinaryTagReader(BaseTagReader):
             for i in range(8):
                 tmp_id=f'{id}{self._get_bit_string(i)}'
 
-                # maybe 1/8 depending on how slots are caluclated
                 print(f"de-colliding: {matching_tags} using prefix: {tmp_id}")
                 num_slots += self._binary_search(matching_tags,tmp_id)
         

@@ -4,7 +4,7 @@ from reader import BinaryTagReader
 import time
 import settings
 
-def run_simulation(num_tags=1600, tag_cls=BaseTag, reader_cls=BinaryTagReader):
+def run_simulation(num_tags=5000, tag_cls=BaseTag, reader_cls=BinaryTagReader):
     # Create a collection of tags
     tags = [tag_cls() for _ in range(num_tags)]
     tag_reader = reader_cls()
