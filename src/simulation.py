@@ -4,8 +4,8 @@ from reader import BinaryTagReader
 import time
 import settings
 
-def run_simulation(num_tags=10, tag_cls=BaseTag, reader_cls=BinaryTagReader):
-    # Create a collection fo tags
+def run_simulation(num_tags=1600, tag_cls=BaseTag, reader_cls=BinaryTagReader):
+    # Create a collection of tags
     tags = [tag_cls() for _ in range(num_tags)]
     tag_reader = reader_cls()
 
@@ -18,15 +18,22 @@ def run_simulation(num_tags=10, tag_cls=BaseTag, reader_cls=BinaryTagReader):
 
     transmission_map = {}
     for t in tags:
-        transmission_map[t.transmit_time] = [t.id] if None else transmission_map[t.transmit_time].append(t.id)
-    
+        # transmission_map[t.transmit_time] = [t.id] if not transmission_map.get(t.transmit_time) else transmission_map[t.transmit_time].append(t.id)
+        if not transmission_map.get(t.transmit_time):
+            transmission_map[t.transmit_time] = [t]
+        else:
+            transmission_map[t.transmit_time].append(t)
+        # print(f"Transmission map: {transmission_map}")
 
     slots = 0
 
-    for _,tags in transmission_map:
+    for t, tags in transmission_map.items():
         if len(tags) <= 1:
             continue
-            
+
+        print(f"[NEW COLLISION] De-colliding: {tags} at time: {t}")
         slots += tag_reader.manage_collision(tags)
+    
+    print(f"Total Slots: {slots}")
 
 
