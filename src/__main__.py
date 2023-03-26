@@ -16,7 +16,7 @@ if len(sys.argv) > 1 and sys.argv [-1] == '--debug':
     run_simulation()
     exit(0)
 
-plot = Plot()
+plot = Plot(title="NFC Collision Algorithm Comparison", y_label="slots", x_label="tags")
 
 #############################
 # Gen 1 Protocol Simulation
@@ -31,7 +31,7 @@ for s in settings.SAMPLE_SIZES:
     x.append(s)
     y.append(num_slots)
 
-plot.add(x,y)
+plot.add(x,y, settings.GRAPH_COLOURS[0], label="Gen 1 Protocol")
 
 #############################
 # Binary Tree Protocol Simulation
@@ -46,7 +46,7 @@ for s in settings.SAMPLE_SIZES:
     x.append(s)
     y.append(num_slots)
 
-plot.add(x,y)
+plot.add(x,y, settings.GRAPH_COLOURS[1], label="Binary Tree Protocol")
 
 
 
