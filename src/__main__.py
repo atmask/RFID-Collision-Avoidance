@@ -50,4 +50,22 @@ plot.add(x,y, settings.GRAPH_COLOURS[1], label="Binary Tree Protocol")
 
 
 
+##############################
+# Research paper data
+##############################
+print_header("Research Paper")
+x = []
+y = []
+for x_p,y_p in settings.PAPER_BINARY_PROTOCOL_DATA:
+    x.append(x_p)
+    y.append(y_p)
+    print(f"Tags: {x_p}\t Total Slots: {y_p}")
+
+plot.add(x,y, settings.GRAPH_COLOURS[2], label="Research Paper Binary Protocol")
+
+
+    
+
+
+
 plot.show()
