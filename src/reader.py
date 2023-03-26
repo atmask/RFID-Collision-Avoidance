@@ -43,9 +43,8 @@ class GenOneTagReader(BaseTagReader):
         '''Transmit an ID with three numbers. If collision then manage_collision with subset'''
         if len(matching_tags) <= 1:
             logger.debug(f'de-collided: {matching_tags}')
-            # TODO: We may need to return 1 here as we are still querying on that id.
-            # This may be why we are linear and not logarithmic
-            return len(matching_tags)
+            # return 1 here as we are still querying on that id.
+            return 1
         
         # Need all permuations of three bits 000 001 010 011 100 101 110 111
         if len(matching_tags) > 1:
