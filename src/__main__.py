@@ -33,7 +33,7 @@ def execute(name, title, reader_cls, colour=settings.GRAPH_COLOURS[0], iteration
     y_avg = list(map(lambda y: y/iterations, y_sum))
     
     for tags, slots in zip(settings.SAMPLE_SIZES, y_avg):
-        print(f"Tags: {tags}\t Total Slots: {slots}")
+        logger.info(f"Tags: {tags}\t Total Slots: {slots}")
 
     plot.add(settings.SAMPLE_SIZES, y_avg, colour, label=title)
 
@@ -79,6 +79,5 @@ for x_p,y_p in settings.PAPER_BINARY_PROTOCOL_DATA:
     print(f"Tags: {x_p}\t Total Slots: {y_p}")
 
 plot.add(x,y, settings.GRAPH_COLOURS[2], label="Research Paper Binary Protocol")
-
 
 plot.show()
