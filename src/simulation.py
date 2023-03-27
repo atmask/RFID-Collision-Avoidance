@@ -33,7 +33,7 @@ def run_simulation(num_tags=10, reader_cls=BinaryTagReader, tag_cls=BaseTag):
         logger.debug(f"[NEW COLLISION] De-colliding: {tags} at time: {t}")
         slots += tag_reader.manage_collision(tags)
     
-    logger.info(f"Tags: {num_tags}\t Total Slots: {slots}")
+    logger.debug(f"Tags: {num_tags}\t Total Slots: {slots}")
     return num_tags, slots
 
 
