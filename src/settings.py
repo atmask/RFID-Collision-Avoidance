@@ -8,7 +8,7 @@ logging.basicConfig(format=FORMAT, level=logging.INFO)
 ###################
 # Graph Config    #
 ###################
-GRAPH_COLOURS = ['purple', 'orange', 'black', 'blue', 'pink']
+GRAPH_COLOURS = ['purple', 'orange', 'black', 'blue', 'pink', "coral", "indigo", "forestgreen", "peru", "violet"]
 
 ######################
 # Simulation Config  #

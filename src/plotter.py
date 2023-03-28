@@ -5,9 +5,16 @@ class Plot():
 
     def __init__(self, title, x_label, y_label) -> None:
         self.graph = plt
-        self.graph.title(title)
-        self.graph.ylabel(y_label)
-        self.graph.xlabel(x_label)
+
+        if title:
+            self.graph.title(title)
+        
+        if y_label:
+            self.graph.ylabel(y_label)
+        
+        if x_label:
+            self.graph.xlabel(x_label)
+
         self.max_x = [0]
     
     def _plot_xlogx(self, x):
@@ -40,3 +47,35 @@ class Plot():
         self.graph.legend()
 
         self.graph.show()
+
+class MultiPlot(Plot):
+
+    def __init__(self, num_plots):
+        super().__init__(None, None, None)
+        self.num_plots = num_plots
+        self.graph.subplot(num_plots, 1, 1)
+        # self.graph.tight_layout(pad=1)
+        self.graph.subplots_adjust(hspace=0.8)
+
+    def _set_plot(self, i):
+        if i <= self.num_plots:
+            return self.graph.subplot(self.num_plots, 1, i)
+        else:
+            return None
+
+    def add(self, x, y, plot_row, c, label=None):
+        self._set_plot(plot_row)
+        super().add(x, y, c, label)
+    
+    def show(self):
+        self._set_plot(1)
+        super().show()
+    
+    def set_meta(self, plot_row, title, y_label, x_label):
+        g = self._set_plot(plot_row)
+        g.set_title(title)
+        g.set_ylabel(y_label)
+        g.set_xlabel(x_label)
+
+
+
